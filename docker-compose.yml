@@ -13,7 +13,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  api:
+  geocode-api:
     build: .
     container_name: api
     restart: always
@@ -28,6 +28,11 @@ services:
     networks:
       - traefik
       - geocode-internal
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.geocode-api.rule=Host(`geocode.example.com`)'
+      - 'traefik.http.services.geocode-api.loadbalancer.server.port=4000'
+      - 'traefik.docker.network=traefik'
 
 networks:
   traefik:
