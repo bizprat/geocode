@@ -4,15 +4,15 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT;
 
 // PostgreSQL connection
 const pool = new Pool({
-  user: 'geo',
   host: 'db',
-  database: 'geocode',
-  password: 'geo',
   port: 5432,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
 });
 
 const maxLimit = 100;

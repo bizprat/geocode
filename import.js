@@ -8,16 +8,16 @@ const { Pool } = pkg;
 const pool = new Pool({
   host: 'db',
   port: 5432,
-  user: 'geo',
-  password: 'geo',
-  database: 'geocode',
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
 });
 
 // Path to cities500.txt file
-const filePath = './cities15000.txt'; // Update if needed
-const minPopulation = 100;
+const filePath = './geonames.txt'; // Update if needed
+const minPopulation = parseInt(process.env.MIN_POPULATION);
 
-const BATCH_SIZE = 50000;
+const BATCH_SIZE = parseInt(process.env.BATCH_SIZE);
 
 async function importData() {
   const client = await pool.connect();

@@ -4,44 +4,22 @@ Welcome to the Geocode Project! This project allows you to import geonames data 
 
 ## 📥 Getting Started
 
-To download and extract the appropriate geonames database, follow these steps:
+Change this config in `.env` file:
 
-1. **Download the geonames databases**:
-   - **All Countries**: [Download Link](https://download.geonames.org/export/dump/allCountries.zip)
-   - **Cities500**: [Download Link](https://download.geonames.org/export/dump/cities500.zip)
+1. **GEONAMES_URL**:
+   - **All Countries**: https://download.geonames.org/export/dump/allCountries.zip
+   - **Cities500**: https://download.geonames.org/export/dump/cities500.zip
 
-2. **Extract the downloaded files** into the `geonames` folder in your project directory.
+2. **MIN_POPULATION**:
+   - This will only import cities whose population is greater than the **MIN_POPULATION** filter.
 
-## ⚙️ Configuration
-
-1. **Update the `filePath` variable** in `import.js` to point to the extracted files. Make sure the path is correct to avoid any issues during the import process.
-
-2. **Change `minPopulation`** in `import.js` to filter the data that will be dumped into the database. Adjust this value according to your needs.
+3. **BATCH_SIZE**:
+   - Larger batch size makes import faster, may not work with slow server. Lower batch size will import slow, but chances of error are low.
 
 ## 🚀 Running the Application
-
-1. **Start the PostgreSQL database** with geospatial capabilities by running the following command:
    ```bash
-   docker-compose up
+   docker-compose up -d
    ```
-   This will start the database as defined in the `docker-compose.yml` file. Note that this file contains the database credentials information.
-
-2. **Install the necessary dependencies** by running:
-   ```bash
-   npm install
-   ```
-
-3. **Dump the data into the database** by executing:
-   ```bash
-   node import.js
-   ```
-   Wait for the process to complete. This may take some time depending on the size of the data.
-
-4. **If you want to run the API**, you can execute:
-   ```bash
-   node index.js
-   ```
-   However, running the API is not necessary, as you can use the database credentials directly in another project. These credentials can be changed in the `docker-compose.yml` file.
 
 ## 🌐 Geocoding and Reverse Geocoding
 
