@@ -6,15 +6,15 @@ import pgFormat from 'pg-format';
 const { Pool } = pkg;
 
 const pool = new Pool({
-  user: 'geo',
-  host: 'localhost',
-  database: 'geocode',
-  password: 'geo',
+  host: 'db',
   port: 5432,
+  user: 'geo',
+  password: 'geo',
+  database: 'geocode',
 });
 
 // Path to cities500.txt file
-const filePath = './geonames/cities500.txt'; // Update if needed
+const filePath = './cities15000.txt'; // Update if needed
 const minPopulation = 100;
 
 const BATCH_SIZE = 50000;

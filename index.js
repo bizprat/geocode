@@ -4,12 +4,12 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 const app = express();
-const port = 3000;
+const PORT = 4000;
 
 // PostgreSQL connection
 const pool = new Pool({
   user: 'geo',
-  host: 'localhost',
+  host: 'db',
   database: 'geocode',
   password: 'geo',
   port: 5432,
@@ -74,6 +74,6 @@ app.get('/reverse', async (req, res) => {
   }
 });
 
-app.listen(port, () =>
-  console.log(`Geocode API running on port ${port}`)
-);
+app.listen(PORT, () => {
+  console.log(`Server running on PORT ${PORT}`);
+});
