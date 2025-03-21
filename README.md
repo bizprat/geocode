@@ -24,6 +24,7 @@ Change this config in `.env` file:
    ```
    
    Start API
+   
    ```bash
    docker compose up -d
    ```
