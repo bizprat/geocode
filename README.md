@@ -18,10 +18,12 @@ Change this config in `.env` file:
 
 ## 🚀 Running the Application
    Crete traefik network in docker if you have not installed traefik docker image (or network not available).
+
    ```bash
    docker network create traefik
    ```
-
+   
+   Start API
    ```bash
    docker compose up -d
    ```
