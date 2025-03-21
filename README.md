@@ -17,8 +17,13 @@ Change this config in `.env` file:
    - Larger batch size makes import faster, may not work with slow server. Lower batch size will import slow, but chances of error are low.
 
 ## 🚀 Running the Application
+   Crete traefik network in docker if you have not installed traefik docker image (or network not available).
    ```bash
-   docker-compose up -d
+   docker network create traefik
+   ```
+
+   ```bash
+   docker compose up -d
    ```
 
 ## 🌐 Geocoding and Reverse Geocoding
